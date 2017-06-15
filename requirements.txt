@@ -1,0 +1,5 @@
+sentry[mysql] < 8
+dj-database-url
+hiredis
+dj-redis-url
+django-redis-cache

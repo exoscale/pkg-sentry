@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
+DISTRIBUTION := $(shell lsb_release -sc)
+VERSION = $(shell debian/sentry/usr/share/python/sentry/bin/python -c 'import pkg_resources; print(str(pkg_resources.get_distribution("sentry")).split()[1])')
+DEBVERSION = $(VERSION)-0~$(DISTRIBUTION)0
+
+%:
+	dh $@ --with python-virtualenv
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(DEBVERSION)
+
+override_dh_virtualenv:
+	dh_virtualenv --extra-pip-arg="--no-binary=:all:" --preinstall=wheel --requirements="requirements.txt" --skip-install
