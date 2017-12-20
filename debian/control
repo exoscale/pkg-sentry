@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 9),
                libxslt1-dev,
                libxml2-dev,
                libffi-dev,
-               libmysqlclient-dev,
+               libpq-dev,
                libssl-dev
 Standards-Version: 3.9.5
 
