@@ -11,7 +11,18 @@ Build-Depends: debhelper (>= 9),
                libxml2-dev,
                libffi-dev,
                libpq-dev,
-               libssl-dev
+               libssl-dev,
+               libtiff5-dev,
+               libjpeg8-dev,
+               zlib1g-dev,
+               libfreetype6-dev,
+               liblcms2-dev,
+               libwebp-dev,
+               libharfbuzz-dev,
+               libfribidi-dev,
+               tcl8.6-dev,
+               tk8.6-dev,
+               python-tk
 Standards-Version: 3.9.5
 
 Package: sentry
