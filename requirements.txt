@@ -1,4 +1,4 @@
-sentry[mysql] < 8
+sentry[postgres]
 dj-database-url
 hiredis
 dj-redis-url
