@@ -1,1 +1,2 @@
 usr/share/python/sentry/bin/sentry usr/bin/sentry
+usr/share/python/sentry/bin/uwsgi usr/bin/uwsgi
