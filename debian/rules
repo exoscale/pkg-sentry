@@ -1,10 +1,11 @@
 #!/usr/bin/make -f
 export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
+export DH_VIRTUALENV_INSTALL_ROOT=/usr/share/python
 
 DISTRIBUTION := $(shell lsb_release -sc)
 VERSION = $(shell debian/sentry/usr/share/python/sentry/bin/python -c 'import pkg_resources; print(str(pkg_resources.get_distribution("sentry")).split()[1])')
-DEBVERSION = $(VERSION)-0~$(DISTRIBUTION)0+exo2
+DEBVERSION = $(VERSION)-0~$(DISTRIBUTION)0+exo3
 
 %:
 	dh $@ --with python-virtualenv
@@ -15,9 +16,10 @@ override_dh_gencontrol:
 override_dh_virtualenv:
 	dh_virtualenv \
 		--extra-pip-arg="--no-binary=:all:" \
+		--extra-pip-arg="--no-deps" \
 		--extra-pip-arg="--only-binary=symbolic" \
 		--preinstall=wheel \
 		--requirements="requirements.txt" --skip-install
 
 override_dh_shlibdeps:
-	dh_shlibdeps -X/firefox/x86/
+	dh_shlibdeps -X/firefox/x86/ -Xlibpng16
